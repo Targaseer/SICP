@@ -1,0 +1,22 @@
+#lang racket/base
+
+(define (cons x y)
+    (lambda (m) (m x y)))
+(define (car z)
+    (z (lambda (p q) p)))
+(define (cdr z)
+    (z (lambda (p q) q)))
+(define (print-pair pair)
+    (display "( ")
+    (display (car pair))
+    (display ", ")
+    (display (cdr pair))
+    (display " )")
+    (newline))
+
+(define a (cons -2 7))
+(car a)
+(cdr a)
+(define b (cons a 19))
+(print-pair (car b))
+(cdr b)
